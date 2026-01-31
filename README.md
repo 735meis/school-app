@@ -1,6 +1,6 @@
 # Timely - School Scheduling App
 
-A mobile application built with React Native and Node.js to help school students access their course schedules and calendar information in a simple and effective way.
+A modern mobile web application built with React and Node.js to help school students access their course schedules and calendar information in a simple and effective way. Features a sleek dark mode design with glassmorphism and smooth animations.
 
 ## Features
 
@@ -42,13 +42,15 @@ school-app/
 │   ├── server.js           # Server entry point
 │   └── seedData.js         # Database seeding script
 │
-└── mobile/                 # React Native mobile app
+└── web/                    # React web application
+    ├── public/             # Static assets
     ├── src/
+    │   ├── components/     # React components (screens)
     │   ├── config/         # API configuration
     │   ├── context/        # React context (Auth)
-    │   ├── navigation/     # Navigation setup
-    │   └── screens/        # App screens
-    └── App.js              # App entry point
+    │   ├── App.js          # App entry point
+    │   └── index.js        # Root render
+    └── package.json
 ```
 
 ## Prerequisites
@@ -56,7 +58,7 @@ school-app/
 - Node.js (v14 or higher)
 - MongoDB (v4.4 or higher)
 - npm or yarn
-- Expo CLI (for React Native)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
 
 ## Backend Setup
 
@@ -102,11 +104,11 @@ npm run dev
 
 The server will run on http://localhost:3000
 
-## Mobile App Setup
+## Web App Setup
 
-1. Navigate to the mobile directory:
+1. Navigate to the web directory:
 ```bash
-cd mobile
+cd web
 ```
 
 2. Install dependencies:
@@ -114,20 +116,22 @@ cd mobile
 npm install
 ```
 
-3. Update the API URL in `src/config/api.js` if needed:
-   - For iOS Simulator: `http://localhost:3000/api`
-   - For Android Emulator: `http://10.0.2.2:3000/api`
-   - For physical device: Use your computer's IP address
+3. The API URL is configured in `src/config/api.js`:
+   - Default: `http://localhost:3000/api`
+   - Update if your backend runs on a different port
 
-4. Start the Expo development server:
+4. Start the development server:
 ```bash
 npm start
 ```
 
-5. Run on your preferred platform:
-   - Press `i` for iOS Simulator
-   - Press `a` for Android Emulator
-   - Scan QR code with Expo Go app on your physical device
+5. Open your browser:
+   - The app will automatically open at `http://localhost:3001`
+   - Or manually navigate to `http://localhost:3001`
+
+6. Login with admin credentials:
+   - Email: `admin@timely.com`
+   - Password: `admin123`
 
 ## API Endpoints
 
@@ -196,10 +200,10 @@ cd backend
 npm run dev  # Uses nodemon for auto-reload
 ```
 
-### Mobile Development
+### Web App Development
 ```bash
-cd mobile
-npm start  # Starts Expo development server
+cd web
+npm start  # Starts React development server with hot reload
 ```
 
 ## Testing with Seed Data
@@ -224,13 +228,23 @@ Use this account to:
 - JWT for authentication
 - bcryptjs for password hashing
 
-### Mobile
-- React Native
-- Expo
-- React Navigation
+### Frontend (Web)
+- React 18
+- React Router for navigation
 - Axios for API calls
-- AsyncStorage for local storage
-- React Native Calendars
+- LocalStorage for token storage
+- Modern CSS with CSS Variables
+- Glassmorphism UI design
+- Gradient animations
+
+## Design Features
+
+- **Modern Dark Mode** - Sleek dark theme with vibrant gradients
+- **Glassmorphism** - Frosted glass effect with backdrop blur
+- **Smooth Animations** - Fade-in, slide-in, and hover effects
+- **Gradient Accents** - Purple to pink gradient themes
+- **Responsive Design** - Works on desktop and mobile browsers
+- **Custom Scrollbars** - Styled gradient scrollbars
 
 ## Security Features
 
@@ -238,7 +252,7 @@ Use this account to:
 - JWT-based authentication
 - Role-based access control
 - Protected API routes
-- Secure token storage
+- Secure token storage in LocalStorage
 
 ## Future Enhancements
 
@@ -248,7 +262,8 @@ Use this account to:
 - Grade reporting
 - Parent portal
 - Multi-language support
-- Dark mode
+- Progressive Web App (PWA) support
+- Calendar export (iCal format)
 
 ## Troubleshooting
 
@@ -261,16 +276,17 @@ Use this account to:
 **Port Already in Use:**
 - Change the PORT in `.env` to a different value
 
-### Mobile Issues
+### Web App Issues
 
 **API Connection Error:**
-- Verify the API URL in `src/config/api.js`
-- Ensure backend server is running
-- Check firewall settings
+- Verify the API URL in `web/src/config/api.js`
+- Ensure backend server is running on port 3000
+- Check browser console for CORS errors
 
-**Expo/React Native Issues:**
-- Clear cache: `expo start -c`
-- Reinstall dependencies: `rm -rf node_modules && npm install`
+**React Build Issues:**
+- Clear cache: `rm -rf node_modules && npm install`
+- Delete build folder: `rm -rf build`
+- Restart development server
 
 ## License
 
